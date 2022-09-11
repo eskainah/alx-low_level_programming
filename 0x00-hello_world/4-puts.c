@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main function
+ * main function - where the program beigns
  *
  * Return: 0
  */
