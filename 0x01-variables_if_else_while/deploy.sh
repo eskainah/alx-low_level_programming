@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m '0x01-variables_if_else_while'
+git commit -m '0-positive_or_negative.c'
 git push
