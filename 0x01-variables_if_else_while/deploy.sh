@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m '0-positive_or_negative.c'
+git commit -m 'variables & loops project'
 git push
