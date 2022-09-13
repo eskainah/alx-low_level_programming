@@ -12,8 +12,8 @@ int main(void)
 
 
 {
-	
-	int n;	
+
+	int n;
 
 
 	srand(time(0));
@@ -27,10 +27,10 @@ int main(void)
 
 	else if (n == 0)
 	{
-		printf("%i is zero\n", n);			
+		printf("%i is zero\n", n);	
 	}
 
-	else 
+	else
 	{
 		printf("%i is negative\n", n);
 	}
