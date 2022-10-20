@@ -1,0 +1,4 @@
+#!/bin/bash
+git add .
+git commit -m '0x12-singly_linked_lists'
+git push
