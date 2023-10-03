@@ -1,1 +1,5 @@
-
+- whatsmyname.c is a program that prints its name, followed by a new line.
+- args.c is a program that prints the number of arguments passed into it.
+- args.c is a program that prints all arguments it receives.
+- mul.c is a program that multiplies two numbers.
+- add.c is a program that adds positive numbers.
