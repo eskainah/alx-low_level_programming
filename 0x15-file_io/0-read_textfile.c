@@ -1,43 +1,39 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <errno.h>
 
-ssize_t read_textfile(const char *filename, size_t letters) {
-    if (filename == NULL) {
-        errno = EINVAL;
-        return 0;
-    }
+/**
+ * read_textfile - Reads a text file and prints it to POSIX stdout.
+ * @filename: A pointer to the name of the file.
+ * @letters: The number of letters the
+ *           function should read and print.
+ *
+ * Return: If the function fails or filename is NULL - 0.
+ *         O/w - the actual number of bytes the function can read and print.
+ */
+ssize_t read_textfile(const char *filename, size_t letters)
+{
+	ssize_t o, r, w;
+	char *buffer;
 
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        return 0;
-    }
+	if (filename == NULL)
+		return (0);
 
-    char *buffer = (char *) malloc(letters + 1);
-    if (buffer == NULL) {
-        fclose(file);
-        errno = ENOMEM;
-        return 0;
-    }
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
+		return (0);
 
-    size_t read = fread(buffer, 1, letters, file);
-    buffer[read] = '\0';
+	o = open(filename, O_RDONLY);
+	r = read(o, buffer, letters);
+	w = write(STDOUT_FILENO, buffer, r);
 
-    if (ferror(file)) {
-        free(buffer);
-        fclose(file);
-        errno = EIO;
-        return 0;
-    }
+	if (o == -1 || r == -1 || w == -1 || w != r)
+	{
+		free(buffer);
+		return (0);
+	}
 
-    fclose(file);
+	free(buffer);
+	close(o);
 
-    if (write(STDOUT_FILENO, buffer, read) != read) {
-        free(buffer);
-        errno = EIO;
-        return 0;
-    }
-
-    free(buffer);
-    return read;
+	return (w);
 }
